@@ -14,7 +14,6 @@
       };
       gpu.enable = lib.mkDefault true;
       gpu.provider = "bundle";
-      fonts.enable = true;
       locale.enable = true;
       timeZone.enable = true;
       bubblewrap = {
@@ -42,6 +41,8 @@
           ]
         ];
         bind.ro = [
+          "/etc/fonts"
+          "/usr/share/fonts"
           (sloth.concat' sloth.xdgConfigHome "/gtk-2.0")
           (sloth.concat' sloth.xdgConfigHome "/gtk-3.0")
           (sloth.concat' sloth.xdgConfigHome "/gtk-4.0")
