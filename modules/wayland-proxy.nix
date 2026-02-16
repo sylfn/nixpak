@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, sloth, ... }:
 
 with lib;
 
@@ -16,7 +16,7 @@ with lib;
       default = "[${config.app.package.pname or (builtins.parseDrvName config.app.package.name).name}] ";
     };
     args = mkOption {
-      type = with types; listOf str;
+      type = with types; listOf sloth.type;
       description = "Arguments (proxy options) to wayland-proxy-virtwl.";
       default = [];
     };
