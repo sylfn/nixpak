@@ -1,3 +1,30 @@
+This repo is a fork of [original nixpak repo](https://github.com/nixpak/nixpak).
+
+Changes:
+- flakeless
+- sloth uses mkdir more
+- gui-base tweaks
+
+## Flakeless usage
+
+```nix
+let
+  pkgs = import <nixpkgs> {};
+  lib = pkgs.lib;
+  nixpak = import <nixpak>;
+  mkNixpak = nixpak.lib.nixpak {inherit pkgs lib;};
+in
+(mkNixpak {
+  config = {
+    imports = [nixpak.profiles.gui-base];
+    app.package = pkgs.gnome-calculator;
+    flatpak.appId = "org.gnome.Calculator";
+  };
+}).config.env
+```
+
+---
+
 # NixPak - Sandboxing for Nix
 
 > Nix? Flatpak? Why not both?
