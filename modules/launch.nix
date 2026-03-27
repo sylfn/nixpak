@@ -38,11 +38,11 @@ let
   setEnv = key: val: [ "--setenv" key val ];
   mountTmpfs = path: [ "--tmpfs" path ];
   
+  tmpfs = map mountTmpfs config.bubblewrap.tmpfs;
   bindPaths = map bind config.bubblewrap.bind.rw;
   bindRoPaths = map bindRo config.bubblewrap.bind.ro;
   bindDevPaths = map bindDev config.bubblewrap.bind.dev;
   envVars = mapAttrsToList setEnv config.bubblewrap.env;
-  tmpfs = map mountTmpfs config.bubblewrap.tmpfs;
 
   app = config.app.package;
   rootPaths = [ app ] ++ config.bubblewrap.extraStorePaths;
@@ -61,11 +61,12 @@ let
     "--unshare-uts"
     "--unshare-cgroup-try"
 
+    # Mount before other paths to allow for protecting paths without subpaths
+    tmpfs
     bindPaths
     bindRoPaths
     (optionals (config.bubblewrap.clearEnv) "--clearenv")
     envVars
-    tmpfs
     
     (optionals (config.bubblewrap.network && !config.pasta.enable) "--share-net")
     (optionals config.bubblewrap.apivfs.dev ["--dev" "/dev"])
