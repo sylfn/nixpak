@@ -82,7 +82,9 @@ in
   }
   // builtins.mapAttrs (_: sloth.mkdir) {
 
-    appDir = sloth.concat' sloth.homeDir "/.var/app/${config.flatpak.appId}";
+    appsDir = sloth.concat' sloth.homeDir "/.var/app";
+
+    appDir = sloth.concat' sloth.appsDir "/${config.flatpak.appId}";
 
     appCacheDir = sloth.concat' sloth.appDir "/cache";
 
