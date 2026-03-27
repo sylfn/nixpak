@@ -23,10 +23,11 @@
           pulse = true;
         };
         bind.rw = [
-          [
-            sloth.appCacheDir
-            sloth.xdgCacheHome
-          ]
+          [sloth.appConfigDir sloth.xdgConfigHome]
+          [sloth.appDataDir sloth.xdgDataHome]
+          [sloth.appStateDir sloth.xdgStateHome]
+
+          [sloth.appCacheDir sloth.xdgCacheHome]
           (sloth.concat' sloth.xdgCacheHome "/fontconfig")
           (sloth.concat' sloth.xdgCacheHome "/mesa_shader_cache")
           (sloth.concat' sloth.xdgCacheHome "/mesa_shader_cache_db")
