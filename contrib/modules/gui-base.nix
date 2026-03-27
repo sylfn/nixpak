@@ -22,6 +22,9 @@
           wayland = true;
           pulse = true;
         };
+        tmpfs = [
+          sloth.appsDir
+        ];
         bind.rw = [
           sloth.appDir
 
