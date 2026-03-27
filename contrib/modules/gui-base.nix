@@ -23,6 +23,8 @@
           pulse = true;
         };
         bind.rw = [
+          sloth.appDir
+
           [sloth.appConfigDir sloth.xdgConfigHome]
           [sloth.appDataDir sloth.xdgDataHome]
           [sloth.appStateDir sloth.xdgStateHome]
