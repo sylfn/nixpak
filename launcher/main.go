@@ -80,6 +80,19 @@ func (i InstanceId) String() string {
 	return i.Id
 }
 
+type Pid struct {
+	Type string
+}
+
+func NewPid(raw JsonRaw) (p Pid) {
+	p.Type = "pid"
+	return
+}
+
+func (p Pid) String() string {
+	return strconv.Itoa(os.Getpid())
+}
+
 type Uid struct {
 	Type string
 }
@@ -155,6 +168,8 @@ func valToString(item any) (ret string) {
 			ret = NewConcat(raw).String()
 		case "instanceId":
 			ret = NewInstanceId(raw).String()
+		case "pid":
+			ret = NewPid(raw).String()
 		case "uid":
 			ret = NewUid(raw).String()
 		case "gid":

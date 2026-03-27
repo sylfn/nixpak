@@ -24,6 +24,9 @@ in
       type = "instanceId";
     };
 
+    pid = {
+      type = "pid";
+    };
     uid = {
       type = "uid";
     };
