@@ -37,6 +37,13 @@
           (sloth.concat' sloth.runtimeDir "/gvfsd")
           (sloth.concat' sloth.runtimeDir "/dconf")
           (sloth.concat' sloth.runtimeDir "/doc")
+
+          # Per-appId /tmp directory
+          # https://github.com/flatpak/flatpak/commit/b65b3f6eadd51bd6600df2c0d07f902a552163d2
+          [
+            (sloth.mkdir (sloth.concat' sloth.runtimeDir "/.flatpak/${config.flatpak.appId}/tmp"))
+            "/tmp"
+          ]
         ];
         bind.ro = [
           (sloth.concat' sloth.xdgConfigHome "/gtk-2.0")
