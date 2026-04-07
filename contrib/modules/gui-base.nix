@@ -16,6 +16,7 @@
       gpu.provider = "bundle";
       fonts.enable = true;
       locale.enable = true;
+      timeZone.enable = true;
       bubblewrap = {
         network = lib.mkDefault false;
         sockets = {
