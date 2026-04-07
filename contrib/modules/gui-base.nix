@@ -54,6 +54,7 @@
           (sloth.concat' sloth.xdgConfigHome "/dconf")
         ];
         env = {
+          FLATPAK_ID = config.flatpak.appId;
           XDG_DATA_DIRS = lib.makeSearchPath "share" [
             pkgs.adwaita-icon-theme
             pkgs.shared-mime-info
