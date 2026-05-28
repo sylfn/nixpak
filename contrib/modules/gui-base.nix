@@ -29,11 +29,6 @@
         bind.rw = [
           sloth.appDir
 
-          [sloth.appConfigDir sloth.xdgConfigHome]
-          [sloth.appDataDir sloth.xdgDataHome]
-          [sloth.appStateDir sloth.xdgStateHome]
-          [sloth.appCacheDir sloth.xdgCacheHome]
-
           (sloth.concat' sloth.runtimeDir "/at-spi/bus")
           (sloth.concat' sloth.runtimeDir "/gvfsd")
           (sloth.concat' sloth.runtimeDir "/dconf")
@@ -63,6 +58,14 @@
             "${pkgs.adwaita-icon-theme}/share/icons"
             "${pkgs.adwaita-icon-theme}/share/pixmaps"
           ];
+          XDG_DATA_HOME = sloth.appDataDir;
+          XDG_CONFIG_HOME = sloth.appConfigDir;
+          XDG_CACHE_HOME = sloth.appCacheDir;
+          XDG_STATE_HOME = sloth.appStateDir;
+          HOST_XDG_DATA_HOME = sloth.xdgDataHome;
+          HOST_XDG_CONFIG_HOME = sloth.xdgConfigHome;
+          HOST_XDG_CACHE_HOME = sloth.xdgCacheHome;
+          HOST_XDG_STATE_HOME = sloth.xdgStateHome;
         };
       };
     };

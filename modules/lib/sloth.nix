@@ -95,7 +95,7 @@ in
 
     appDataDir = sloth.concat' sloth.appDir "/data";
 
-    appStateDir = sloth.concat' sloth.appDir "/state";
+    appStateDir = sloth.concat' sloth.appDir "/.local/state";
 
     xdgCacheHome = sloth.envOr "XDG_CACHE_HOME" (sloth.concat' sloth.homeDir "/.cache");
 
