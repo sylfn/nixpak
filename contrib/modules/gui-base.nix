@@ -54,6 +54,8 @@
           XDG_DATA_DIRS = lib.makeSearchPath "share" [
             pkgs.adwaita-icon-theme
             pkgs.shared-mime-info
+            "/run/current-system/sw"
+            "/usr"
           ];
           XCURSOR_PATH = lib.concatStringsSep ":" [
             "${pkgs.adwaita-icon-theme}/share/icons"
